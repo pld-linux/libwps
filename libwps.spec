@@ -1,4 +1,5 @@
-Summary:	A library for importing Works documents
+Summary:	A library for importing MS Works documents
+Summary(pl.UTF-8):	Biblioteka importuj膮ca dokumenty MS Works
 Name:		libwps
 Version:	0.1.0
 Release:	0.1
@@ -15,17 +16,23 @@ the libwpd (which is already used in three word processors).
 Currently, libwps is a new project, but it imports all Works formats
 since about 1995 with some success.
 
+%description -l pl.UTF-8
+libwps jest filtrem importu plik贸w w formacie MS Works, bazuj膮c膮 na
+bibliotece libwpd u偶ywanej ju偶 w trzech procesorach tekstu. Obecnie
+libwps jest nowym projektem, jednak偶e od ok. roku 1995 jest z pewnym
+sukcesem u偶ywana do importowania wszystkich format贸w MS Works.
+
 %package devel
 Summary:	Header files for libwps library
-Summary(pl):	Pliki nag丑wkowe biblioteki libwps
+Summary(pl.UTF-8):	Pliki nag艂贸wkowe biblioteki libwps
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libwps library.
 
-%description devel -l pl
-Pliki nag丑wkowe biblioteki libwps.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe biblioteki libwps.
 
 %package static
 Summary:	Static libwps library
@@ -36,18 +43,22 @@ Requires:	%{name}-devel = %{version}-%{release}
 %description static
 Static libwps library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libwps.
 
 %package tools
 Summary:	Tools to transform Works Documents into other formats
-Summary(pl):	Narz縟zia do przekszta縞ania dokument體 WordPerfecta na inne formaty
+Summary(pl.UTF-8):	Narz臋dzia przekszta艂caj膮ce dokumenty MS Works na inne formaty
 Group:		Applications/Publishing
 Requires:	%{name} = %{version}-%{release}
 
 %description tools
 Tools to transform Works Documents (WPS) into other formats. Currently
 supported: html, raw, text.
+
+%description tools -l pl.UTF-8
+Narz臋dzia przekszta艂caj膮ce dokumenty MS Works (WPS) do innych
+format贸w. Obecnie obs艂ugiwane: html, raw, tekst.
 
 %prep
 %setup -q
