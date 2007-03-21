@@ -1,5 +1,5 @@
 Summary:	A library for importing MS Works documents
-Summary(pl.UTF-8):	Biblioteka importująca dokumenty MS Works
+Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
 Version:	0.1.0
 Release:	0.1
@@ -17,10 +17,10 @@ Currently, libwps is a new project, but it imports all Works formats
 since about 1995 with some success.
 
 %description -l pl.UTF-8
-libwps jest filtrem importu plików w formacie MS Works, bazującą na
+libwps jest filtrem importu plików w formacie MS Works, bazującym na
 bibliotece libwpd używanej już w trzech procesorach tekstu. Obecnie
 libwps jest nowym projektem, jednakże od ok. roku 1995 jest z pewnym
-sukcesem używana do importowania wszystkich formatów MS Works.
+sukcesem używany do importowania wszystkich formatów MS Works.
 
 %package devel
 Summary:	Header files for libwps library
