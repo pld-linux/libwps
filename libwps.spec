@@ -3,11 +3,14 @@ Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
 Version:	0.1.0
 Release:	0.1
-License:	LGPL
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libwps/%{name}-%{version}.tar.bz2
 # Source0-md5:	996ea73e1a2c07e4074d227a43c00b2e
 URL:		http://libwps.sourceforge.net/
+BuildRequires:	libstdc++-devel
+BuildRequires:	libwpd-devel >= 0.8
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,6 +30,8 @@ Summary:	Header files for libwps library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libwps
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
+Requires:	libwpd-devel >= 0.8
 
 %description devel
 Header files for libwps library.
