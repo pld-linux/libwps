@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/libwps/%{name}-%{version}.tar.bz2
 # Source0-md5:	996ea73e1a2c07e4074d227a43c00b2e
 URL:		http://libwps.sourceforge.net/
+BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libwpd-devel >= 0.8
 BuildRequires:	pkgconfig
@@ -69,6 +70,7 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %setup -q
 
 %build
+cp /usr/share/automake/config.sub .
 %configure \
 	--enable-static
 %{__make}
