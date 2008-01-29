@@ -89,20 +89,27 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES CREDITS HACKING  README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%doc CHANGES CREDITS HACKING README
+%attr(755,root,root) %{_libdir}/libwps-0.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwps-0.1.so.1
+%attr(755,root,root) %{_libdir}/libwps-stream-0.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwps-stream-0.1.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/doxygen/html
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/libwps*
-%{_pkgconfigdir}/*.pc
+%attr(755,root,root) %{_libdir}/libwps-0.1.so
+%attr(755,root,root) %{_libdir}/libwps-stream-0.1.so
+%{_libdir}/libwps-0.1.la
+%{_libdir}/libwps-stream-0.1.la
+%{_includedir}/libwps-0.1
+%{_pkgconfigdir}/libwps-0.1.pc
+%{_pkgconfigdir}/libwps-stream-0.1.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libwps-0.1.a
+%{_libdir}/libwps-stream-0.1.a
 
 %files tools
 %defattr(644,root,root,755)
