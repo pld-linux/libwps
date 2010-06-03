@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/libwps/%{name}-%{version}.tar.gz
 # Source0-md5:	799fc3b835a79adce8c88a3fee0150c1
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	automake
+BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
 BuildRequires:	libwpd-devel >= 0.8
 BuildRequires:	pkgconfig
