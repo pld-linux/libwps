@@ -1,18 +1,19 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.1.2
+Version:	0.2.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libwps/%{name}-%{version}.tar.gz
-# Source0-md5:	799fc3b835a79adce8c88a3fee0150c1
+Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.gz
+# Source0-md5:	b569376fb0aefc5284b10a695bd2daa6
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
-BuildRequires:	libwpd-devel >= 0.8
+BuildRequires:	libwpd-devel >= 0.9
 BuildRequires:	pkgconfig
+Requires:	libwpd >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +34,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libwps
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
-Requires:	libwpd-devel >= 0.8
+Requires:	libwpd-devel >= 0.9
 
 %description devel
 Header files for libwps library.
@@ -91,26 +92,26 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES CREDITS HACKING README
-%attr(755,root,root) %{_libdir}/libwps-0.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwps-0.1.so.1
-%attr(755,root,root) %{_libdir}/libwps-stream-0.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwps-stream-0.1.so.1
+%attr(755,root,root) %{_libdir}/libwps-0.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwps-0.2.so.2
+#%attr(755,root,root) %{_libdir}/libwps-stream-0.2.so.*.*.*
+#%attr(755,root,root) %ghost %{_libdir}/libwps-stream-0.2.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/doxygen/html
-%attr(755,root,root) %{_libdir}/libwps-0.1.so
-%attr(755,root,root) %{_libdir}/libwps-stream-0.1.so
-%{_libdir}/libwps-0.1.la
-%{_libdir}/libwps-stream-0.1.la
-%{_includedir}/libwps-0.1
-%{_pkgconfigdir}/libwps-0.1.pc
-%{_pkgconfigdir}/libwps-stream-0.1.pc
+%attr(755,root,root) %{_libdir}/libwps-0.2.so
+#%attr(755,root,root) %{_libdir}/libwps-stream-0.2.so
+%{_libdir}/libwps-0.2.la
+#%{_libdir}/libwps-stream-0.2.la
+%{_includedir}/libwps-0.2
+%{_pkgconfigdir}/libwps-0.2.pc
+#%{_pkgconfigdir}/libwps-stream-0.2.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libwps-0.1.a
-%{_libdir}/libwps-stream-0.1.a
+%{_libdir}/libwps-0.2.a
+#%{_libdir}/libwps-stream-0.2.a
 
 %files tools
 %defattr(644,root,root,755)
