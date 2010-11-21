@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki libwps.
 
 %package static
 Summary:	Static libwps library
-Summary(pl):	Statyczna biblioteka libwps
+Summary(pl.UTF-8):	Statyczna biblioteka libwps
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -72,7 +72,7 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %setup -q
 
 %build
-cp /usr/share/automake/config.sub .
+cp -f /usr/share/automake/config.sub .
 %configure \
 	--enable-static
 %{__make}
@@ -94,24 +94,18 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES CREDITS HACKING README
 %attr(755,root,root) %{_libdir}/libwps-0.2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libwps-0.2.so.2
-#%attr(755,root,root) %{_libdir}/libwps-stream-0.2.so.*.*.*
-#%attr(755,root,root) %ghost %{_libdir}/libwps-stream-0.2.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/doxygen/html
 %attr(755,root,root) %{_libdir}/libwps-0.2.so
-#%attr(755,root,root) %{_libdir}/libwps-stream-0.2.so
 %{_libdir}/libwps-0.2.la
-#%{_libdir}/libwps-stream-0.2.la
 %{_includedir}/libwps-0.2
 %{_pkgconfigdir}/libwps-0.2.pc
-#%{_pkgconfigdir}/libwps-stream-0.2.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwps-0.2.a
-#%{_libdir}/libwps-stream-0.2.a
 
 %files tools
 %defattr(644,root,root,755)
