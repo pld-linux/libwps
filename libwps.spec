@@ -2,7 +2,7 @@ Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
 Version:	0.2.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.gz
@@ -83,6 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -99,7 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/doxygen/html
 %attr(755,root,root) %{_libdir}/libwps-0.2.so
-%{_libdir}/libwps-0.2.la
 %{_includedir}/libwps-0.2
 %{_pkgconfigdir}/libwps-0.2.pc
 
