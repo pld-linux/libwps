@@ -2,16 +2,18 @@ Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
 Version:	0.2.0
-Release:	4
+Release:	5
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.gz
 # Source0-md5:	b569376fb0aefc5284b10a695bd2daa6
 Patch0:		%{name}-werror.patch
 URL:		http://libwps.sourceforge.net/
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	libwpd-devel >= 0.9
 BuildRequires:	pkgconfig
 Requires:	libwpd >= 0.9
@@ -74,7 +76,10 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__libtoolize}
+%{__aclocal}
+%{__automake}
+%{__autoconf}
 %configure \
 	--enable-static
 %{__make}
