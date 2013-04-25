@@ -1,21 +1,23 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.2.0
-Release:	5
+Version:	0.2.8
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.gz
-# Source0-md5:	b569376fb0aefc5284b10a695bd2daa6
-Patch0:		%{name}-werror.patch
+Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.xz
+# Source0-md5:	0a7b754a3c9462c4adfb42811e6754dd
 URL:		http://libwps.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 0.65
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	libwpd-devel >= 0.9
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.20
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	libwpd >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,14 +75,15 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__automake}
+%{__autoheader}
 %{__autoconf}
 %configure \
+	--disable-silent-rules \
 	--enable-static
 %{__make}
 
@@ -91,6 +94,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+# packaged as %doc in -devel
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}/html
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -100,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES CREDITS HACKING README
+%doc CREDITS ChangeLog HACKING NEWS README
 %attr(755,root,root) %{_libdir}/libwps-0.2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libwps-0.2.so.2
 
