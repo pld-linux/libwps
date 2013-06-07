@@ -82,9 +82,12 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %{__automake}
 %{__autoheader}
 %{__autoconf}
+# Note: as of 0.2.9, build with -Werror fails with gcc 4.8:
+# WPS8Graph.cpp:245:34: error: typedef 'Pict' locally defined but not used [-Werror=unused-local-typedefs]
 %configure \
 	--disable-silent-rules \
-	--enable-static
+	--enable-static \
+	--disable-werror
 %{__make}
 
 %install
