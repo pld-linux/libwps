@@ -1,45 +1,45 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.2.9
+Version:	0.3.0
 Release:	1
-License:	LGPL v2+
+License:	MPL v2.0 or LGPL v2.1+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.xz
-# Source0-md5:	95ae3908111b1ab8a3e3caed1807b5be
+# Source0-md5:	3c2958317878d4888804d66a203d00f8
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	autoconf >= 0.65
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	boost-devel
 BuildRequires:	doxygen
-BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
-BuildRequires:	libwpd-devel >= 0.9
+BuildRequires:	librevenge-devel >= 0.0
+BuildRequires:	libstdc++-devel >= 6:4.3
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.20
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	libwpd >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libwps is a Microsoft Works file format import filter based on top of
-the libwpd (which is already used in three word processors).
-Currently, libwps is a new project, but it imports all Works formats
-since about 1995 with some success.
+the librevenge (which is already used in three word processors).
+Currently, libwps can import all word processing Microsoft Works
+formats since about 1995 with some success and some spreadsheet
+Microsoft Works.
 
 %description -l pl.UTF-8
-libwps jest filtrem importu plików w formacie MS Works, bazującym na
-bibliotece libwpd używanej już w trzech procesorach tekstu. Obecnie
-libwps jest nowym projektem, jednakże od ok. roku 1995 jest z pewnym
-sukcesem używany do importowania wszystkich formatów MS Works.
+libwps jest filtrem importu plików w formacie Microsoft Works,
+opartymm na bibliotece librevenge (używanej już w trzech procesorach
+tekstu). Obecnie libwps potrafi importować wszystkie formaty tekstowe
+Microsoft Works od około 1995 roku oraz niektóre arkusze kalkulacyjne
+Microsoft Works.
 
 %package devel
 Summary:	Header files for libwps library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libwps
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	librevenge-devel >= 0.0
 Requires:	libstdc++-devel
-Requires:	libwpd-devel >= 0.9
 
 %description devel
 Header files for libwps library.
@@ -58,6 +58,17 @@ Static libwps library.
 
 %description static -l pl.UTF-8
 Statyczna biblioteka libwps.
+
+%package apidocs
+Summary:	API documentation for libwps library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libwps
+Group:		Documentation
+
+%description apidocs
+API documentation for libwps library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki libwps.
 
 %package tools
 Summary:	Tools to transform Works Documents into other formats
@@ -82,12 +93,12 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %{__automake}
 %{__autoheader}
 %{__autoconf}
-# Note: as of 0.2.9, build with -Werror fails with gcc 4.8:
-# WPS8Graph.cpp:245:34: error: typedef 'Pict' locally defined but not used [-Werror=unused-local-typedefs]
+# -std=c++11 is needed for std::shared_ptr
+CXXFLAGS="%{rpmcxxflags} -std=c++11"
 %configure \
 	--disable-silent-rules \
 	--enable-static \
-	--disable-werror
+	--with-sharedptr=c++11
 %{__make}
 
 %install
@@ -108,23 +119,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CREDITS ChangeLog HACKING NEWS README
-%attr(755,root,root) %{_libdir}/libwps-0.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwps-0.2.so.2
+%doc CREDITS ChangeLog NEWS README
+%attr(755,root,root) %{_libdir}/libwps-0.3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwps-0.3.so.3
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/doxygen/html
-%attr(755,root,root) %{_libdir}/libwps-0.2.so
-%{_includedir}/libwps-0.2
-%{_pkgconfigdir}/libwps-0.2.pc
+%attr(755,root,root) %{_libdir}/libwps-0.3.so
+%{_includedir}/libwps-0.3
+%{_pkgconfigdir}/libwps-0.3.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libwps-0.2.a
+%{_libdir}/libwps-0.3.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%doc docs/doxygen/html/*
 
 %files tools
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/wks2csv
+%attr(755,root,root) %{_bindir}/wks2raw
+%attr(755,root,root) %{_bindir}/wks2text
 %attr(755,root,root) %{_bindir}/wps2html
 %attr(755,root,root) %{_bindir}/wps2raw
 %attr(755,root,root) %{_bindir}/wps2text
