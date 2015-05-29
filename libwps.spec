@@ -1,12 +1,12 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.3.1
-Release:	3
+Version:	0.4.0
+Release:	1
 License:	MPL v2.0 or LGPL v2.1+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.xz
-# Source0-md5:	d62253cd1c8b8d296902ec7726a1022b
+# Source0-md5:	7daace0a791104af382a277ff81e828a
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	autoconf >= 0.65
 BuildRequires:	automake >= 1:1.11
@@ -123,18 +123,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CREDITS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libwps-0.3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwps-0.3.so.3
+%attr(755,root,root) %{_libdir}/libwps-0.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwps-0.4.so.4
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libwps-0.3.so
-%{_includedir}/libwps-0.3
-%{_pkgconfigdir}/libwps-0.3.pc
+%attr(755,root,root) %{_libdir}/libwps-0.4.so
+%{_includedir}/libwps-0.4
+%{_pkgconfigdir}/libwps-0.4.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libwps-0.3.a
+%{_libdir}/libwps-0.4.a
 
 %files apidocs
 %defattr(644,root,root,755)
