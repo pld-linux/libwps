@@ -1,0 +1,11 @@
+--- libwps-0.4.1/src/lib/WPS8.cpp.orig	2015-09-13 19:38:16.406884701 +0200
++++ libwps-0.4.1/src/lib/WPS8.cpp	2015-09-13 19:38:20.300217872 +0200
+@@ -23,6 +23,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#include <algorithm>
++
+ #include <librevenge-stream/librevenge-stream.h>
+ 
+ #include "libwps_internal.h"
