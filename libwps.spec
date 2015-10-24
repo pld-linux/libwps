@@ -1,19 +1,19 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.4.1
+Version:	0.4.2
 Release:	1
 License:	MPL v2.0 or LGPL v2.1+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.xz
-# Source0-md5:	daf202d25eb443cfa7318f5688f22e30
+# Source0-md5:	fdfc3b9c40d5912927a866d88196f394
 Patch0:		%{name}-include.patch
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	autoconf >= 0.65
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	doxygen
 BuildRequires:	librevenge-devel >= 0.0
-BuildRequires:	libstdc++-devel >= 6:4.3
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.20
 BuildRequires:	tar >= 1:1.22
@@ -40,7 +40,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libwps
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	librevenge-devel >= 0.0
-Requires:	libstdc++-devel
+Requires:	libstdc++-devel >= 6:4.7
 
 %description devel
 Header files for libwps library.
@@ -98,8 +98,6 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %{__automake}
 %{__autoheader}
 %{__autoconf}
-# -std=c++11 is needed for std::shared_ptr
-CXXFLAGS="%{rpmcxxflags} -std=c++11"
 %configure \
 	--disable-silent-rules \
 	--enable-static \
