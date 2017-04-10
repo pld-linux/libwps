@@ -1,12 +1,12 @@
 Summary:	A library for importing MS Works documents
 Summary(pl.UTF-8):	Biblioteka importu dokumentów MS Works
 Name:		libwps
-Version:	0.4.5
+Version:	0.4.6
 Release:	1
 License:	MPL v2.0 or LGPL v2.1+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libwps/%{name}-%{version}.tar.xz
-# Source0-md5:	826670449a584eda689b384232334838
+# Source0-md5:	b04428f208e2eb31adcba5a53dec62c2
 Patch0:		%{name}-include.patch
 URL:		http://libwps.sourceforge.net/
 BuildRequires:	autoconf >= 0.65
