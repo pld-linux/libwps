@@ -100,8 +100,8 @@ formatów. Obecnie obsługiwane: html, raw, tekst.
 %{__autoconf}
 %configure \
 	--disable-silent-rules \
-	--enable-static \
-	--with-sharedptr=c++11
+	--enable-static
+
 %{__make}
 
 %install
