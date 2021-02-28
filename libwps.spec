@@ -64,9 +64,7 @@ Statyczna biblioteka libwps.
 Summary:	API documentation for libwps library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libwps
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libwps library.
